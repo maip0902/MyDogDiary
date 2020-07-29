@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity: AppCompatActivity() {
@@ -25,7 +26,19 @@ class RegisterActivity: AppCompatActivity() {
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("auth", "createUserWithEmail:success")
+
+                        // userのprofile設定
                         val user = auth.currentUser
+                        val displayName = registerDisplayName.text.toString()
+                        val profileUpdates = UserProfileChangeRequest.Builder().setDisplayName(displayName).build()
+
+                        user?.updateProfile(profileUpdates)
+                            ?.addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    Log.d("text", "update displayname success")
+                                }
+                            }
+
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w("auth", "createUserWithEmail:failure", task.exception)
