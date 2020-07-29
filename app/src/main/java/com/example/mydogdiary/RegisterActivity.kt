@@ -1,5 +1,6 @@
 package com.example.mydogdiary
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -26,9 +27,9 @@ class RegisterActivity: AppCompatActivity() {
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("auth", "createUserWithEmail:success")
+                        val user = auth.currentUser
 
                         // userのprofile設定
-                        val user = auth.currentUser
                         val displayName = registerDisplayName.text.toString()
                         val profileUpdates = UserProfileChangeRequest.Builder().setDisplayName(displayName).build()
 
@@ -36,6 +37,10 @@ class RegisterActivity: AppCompatActivity() {
                             ?.addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
                                     Log.d("text", "update displayname success")
+
+                                    val intent = Intent(this, HomeActivity::class.java)
+                                    startActivity(intent)
+
                                 }
                             }
 
