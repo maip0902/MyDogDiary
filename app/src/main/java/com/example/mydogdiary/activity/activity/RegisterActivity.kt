@@ -31,6 +31,7 @@ class RegisterActivity: AppCompatActivity() {
             Log.d("text", registerEmail)
             Log.d("text", registerPassword)
 
+            // TODO::try,catchのリファクタ
             auth.createUserWithEmailAndPassword(registerEmail, registerPassword)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -49,20 +50,17 @@ class RegisterActivity: AppCompatActivity() {
 
                                     val intent = Intent(this, HomeActivity::class.java)
                                     startActivity(intent)
-
                                 }
                             }
                     } else {
-                        Log.d("error", task.exception?.message)
-
                         when(task.exception?.message) {
-                            "The email address is already in use by another account." -> {
+                            FirebaseUserException.alreadyUsedEmail.exception -> {
                                 errorMessage.text = FirebaseUserException.alreadyUsedEmail.returnErrorMessage()
                             }
-                            "The email address is badly formatted." -> {
+                            FirebaseUserException.invalidEmail.exception -> {
                                 errorMessage.text = FirebaseUserException.invalidEmail.returnErrorMessage()
                             }
-                            "The given password is invalid. [ Password should be at least 6 characters ]" -> {
+                            FirebaseUserException.shortPassword.exception -> {
                                 errorMessage.text = FirebaseUserException.shortPassword.returnErrorMessage()
                             }
                         }
