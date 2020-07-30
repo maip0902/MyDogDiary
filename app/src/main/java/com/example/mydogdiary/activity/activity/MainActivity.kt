@@ -1,4 +1,4 @@
-package com.example.mydogdiary.activity
+package com.example.mydogdiary.activity.activity
 
 import android.content.Intent
 import android.os.Bundle

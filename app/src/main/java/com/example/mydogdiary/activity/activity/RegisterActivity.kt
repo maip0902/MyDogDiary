@@ -1,10 +1,11 @@
-package com.example.mydogdiary.activity
+package com.example.mydogdiary.activity.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mydogdiary.R
+import com.example.mydogdiary.activity.firebaseEnum.FirebaseUserException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.android.synthetic.main.activity_register.*
@@ -51,19 +52,19 @@ class RegisterActivity: AppCompatActivity() {
 
                                 }
                             }
-
                     } else {
                         Log.d("error", task.exception?.message)
-                        if (task.exception?.message == "The email address is already in use by another account.") {
-                            Log.d("error", "すでに登録されているメールアドレスです")
-                        }
 
-                        if(task.exception?.message == "The email address is badly formatted.") {
-                            Log.d("error", "正しいメーリアドレスの形式で入力してください")
-                        }
-
-                        if(task.exception?.message == "The given password is invalid. [ Password should be at least 6 characters ]") {
-                            Log.d("error", "パスワードは6文字以上で設定してください")
+                        when(task.exception?.message) {
+                            "The email address is already in use by another account." -> {
+                                errorMessage.text = FirebaseUserException.alreadyUsedEmail.returnErrorMessage()
+                            }
+                            "The email address is badly formatted." -> {
+                                errorMessage.text = FirebaseUserException.invalidEmail.returnErrorMessage()
+                            }
+                            "The given password is invalid. [ Password should be at least 6 characters ]" -> {
+                                errorMessage.text = FirebaseUserException.shortPassword.returnErrorMessage()
+                            }
                         }
                     }
                 }
