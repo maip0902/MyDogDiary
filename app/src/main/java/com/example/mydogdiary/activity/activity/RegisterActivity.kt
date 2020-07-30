@@ -16,9 +16,6 @@ class RegisterActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         /*
-        1. email,passwordがnullだったらバリデーションエラー返す
-        2. emailがメールアドレスの形じゃなかったらエラー
-        3. 同じメールアドレスですでに登録されてたらエラー
         4. displayNameは10文字以内
          */
         auth = FirebaseAuth.getInstance()
