@@ -51,15 +51,14 @@ class RegisterActivity: AppCompatActivity() {
                             }
                     } else {
                         when(task.exception?.message) {
-                            FirebaseUserException.alreadyUsedEmail.exception -> {
+                            FirebaseUserException.alreadyUsedEmail.exception ->
                                 errorMessage.text = FirebaseUserException.alreadyUsedEmail.returnErrorMessage()
-                            }
-                            FirebaseUserException.invalidEmail.exception -> {
+                            FirebaseUserException.invalidEmail.exception ->
                                 errorMessage.text = FirebaseUserException.invalidEmail.returnErrorMessage()
-                            }
-                            FirebaseUserException.shortPassword.exception -> {
+                            FirebaseUserException.shortPassword.exception ->
                                 errorMessage.text = FirebaseUserException.shortPassword.returnErrorMessage()
-                            }
+                            else ->
+                                errorMessage.text = FirebaseUserException.otherwise.returnErrorMessage()
                         }
                     }
                 }
