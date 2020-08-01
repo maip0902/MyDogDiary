@@ -7,7 +7,7 @@
     tools:context=".activity.activity.MainActivity">
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/saveDiary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="92dp"
@@ -38,7 +38,7 @@
         android:layout_marginBottom="104dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintBottom_toTopOf="@+id/saveDiary"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="124dp"
         android:text="password"
-        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintBottom_toTopOf="@+id/saveDiary"
         app:layout_constraintEnd_toStartOf="@+id/loginPassword"
         app:layout_constraintHorizontal_bias="0.365"
         app:layout_constraintStart_toStartOf="parent" />

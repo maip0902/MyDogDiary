@@ -17,7 +17,7 @@ class LoginActivity: AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         // TODO::リファクタしたい
-        login.setOnClickListener {
+        saveDiary.setOnClickListener {
             errorMessage.text = ""
 
             if(loginEmail.text.toString() == "" && loginPassword.text.toString() == "") {

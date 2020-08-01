@@ -15,7 +15,7 @@ tools:context=".activity.activity.MainActivity">
     tools:layout_editor_absoluteY="252dp" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/saveDiary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LOGIN"
