@@ -11,9 +11,9 @@ open class Diary(): RealmObject() {
     @Required
     var body: String = ""
     @Required
-    var userId: String = ""
+    var userId: String? = ""
 
     public fun getDiaryBody(): String { return this.body}
 
-    public fun getDiaryUserId(): String { return this.userId}
+    public fun getDiaryUserId(): String? { return this.userId}
 }

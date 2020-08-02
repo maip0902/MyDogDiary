@@ -7,7 +7,7 @@
     tools:context=".activity.activity.MainActivity">
 
     <TextView
-        android:id="@+id/displayName"
+        android:id="@+id/loginUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="displayName"
@@ -24,6 +24,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.814"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/displayName"
+        app:layout_constraintTop_toBottomOf="@+id/loginUser"
         app:layout_constraintVertical_bias="0.541" />
 </androidx.constraintlayout.widget.ConstraintLayout>

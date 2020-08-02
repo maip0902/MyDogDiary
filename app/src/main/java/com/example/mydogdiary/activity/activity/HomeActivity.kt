@@ -2,25 +2,17 @@ package com.example.mydogdiary.activity.activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.example.mydogdiary.R
-import com.google.firebase.auth.FirebaseAuth
+import com.example.mydogdiary.activity.middleware.AuthenticateActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity: AppCompatActivity() {
+class HomeActivity: AuthenticateActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.isAuthenticated()
         setContentView(R.layout.activity_home)
-        val user = FirebaseAuth.getInstance().currentUser
-
-        user?.let {
-            for (profile in it.providerData) {
-                val loginUserDisplayName = profile.displayName
-                displayName.text = loginUserDisplayName
-            }
-        }
-
+        loginUser.text = this.displayName
         saveDiary.setOnClickListener {
             val intent = Intent(this, CreateActivity::class.java)
             startActivity(intent)
