@@ -2,6 +2,8 @@ package com.example.mydogdiary.activity.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.ArrayAdapter
 import com.example.mydogdiary.R
 import com.example.mydogdiary.activity.Repository.RealmDiaryRepository
 import com.example.mydogdiary.activity.middleware.AuthenticateActivity
@@ -21,6 +23,13 @@ class HomeActivity: AuthenticateActivity() {
 
         val diary = RealmDiaryRepository()
         val diaries = diary.findAll()
+
+        for (diary in diaries) {
+            Log.d("diary", diary.id)
+            Log.d("diary", diary.body)
+        }
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, diaries)
+        listView.adapter = adapter
 
     }
 }
