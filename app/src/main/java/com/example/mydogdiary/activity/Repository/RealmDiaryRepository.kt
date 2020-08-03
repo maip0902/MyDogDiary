@@ -22,4 +22,8 @@ class RealmDiaryRepository(val realm: Realm = Realm.getDefaultInstance()) {
     public fun findAll(): RealmResults<Diary> {
         return realm.where(Diary::class.java).findAll()
     }
+
+    public fun findByUserId(userId: String?): RealmResults<Diary> {
+        return realm.where(Diary::class.java).equalTo("userId", userId).findAll()
+    }
 }
