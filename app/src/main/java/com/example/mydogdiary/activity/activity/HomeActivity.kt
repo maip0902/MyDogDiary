@@ -3,9 +3,10 @@ package com.example.mydogdiary.activity.activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
 import com.example.mydogdiary.R
+import com.example.mydogdiary.activity.ListObject.TimelineDiary
 import com.example.mydogdiary.activity.Repository.RealmDiaryRepository
+import com.example.mydogdiary.activity.adapter.TimeLineAdapter
 import com.example.mydogdiary.activity.middleware.AuthenticateActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -24,11 +25,14 @@ class HomeActivity: AuthenticateActivity() {
         val diary = RealmDiaryRepository()
         val diaries = diary.findAll()
 
+        val timelineDiary: ArrayList<TimelineDiary> = arrayListOf()
+
         for (diary in diaries) {
-            Log.d("diary", diary.id)
-            Log.d("diary", diary.body)
+            timelineDiary.add(TimelineDiary(diary.body))
+            Log.d("diaryList", diary.id)
+            Log.d("diaryList", diary.body)
         }
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, diaries)
+        val adapter = TimeLineAdapter(this, timelineDiary)
         listView.adapter = adapter
 
     }
