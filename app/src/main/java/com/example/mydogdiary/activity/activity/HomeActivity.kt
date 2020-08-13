@@ -17,8 +17,14 @@ class HomeActivity: AuthenticateActivity() {
         this.isAuthenticated()
         setContentView(R.layout.activity_home)
         loginUser.text = this.displayName
+
         saveDiary.setOnClickListener {
             val intent = Intent(this, CreateActivity::class.java)
+            startActivity(intent)
+        }
+
+        goMyPage.setOnClickListener {
+            val intent = Intent(this, MypageActivity::class.java)
             startActivity(intent)
         }
 
